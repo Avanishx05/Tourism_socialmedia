@@ -1,0 +1,28 @@
+<%- layout("/layouts/boilerplate.ejs") %>
+<h1>All Campgrounds</h1>
+
+<% for (let campground of campgrounds){%>
+     <div class="card" mb-3>
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-fluid" alt="" src="<%=campground.image%>">
+            </div>
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%=campground.title%></h5>
+                    <p class="card-text"><%=campground.description%></p>
+                    <p class="card-text">
+                        <small class="text-muted"><%=campground.location%></small>
+                    </p>
+                    <a href="campgrounds/<%=campground.id%>" class="btn btn-info">View</a>
+                    <form class="d-inline" action="/campgrounds/<%=campground._id%>/?_method=DELETE" method="POST">
+                        <button class="btn btn-danger ml-3">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>
+
+<%}%>
+
